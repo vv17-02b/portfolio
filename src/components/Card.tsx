@@ -8,7 +8,7 @@ const Card = ({ image, title, subtitle, link }: Project & { link: string }) => {
                 <img className="w-full" src={image} alt={title} />
                 <div className="flex flex-col justify-between p-4 text-white">
                     <h2 className="mb-2">
-                        {title}
+                        {title} 
                     </h2>
                     <p className="mb-4 text-sm font-medium">{subtitle}</p>
                 </div>
