@@ -1,0 +1,15 @@
+@use './reset' as *;
+@use './variables' as *;
+@use './settings' as *;
+@use './mixins/index' as *;
+
+
+@use './components/navbar' as *;
+// @use './components/burger' as *;
+// @use './components/textanimate' as *;
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

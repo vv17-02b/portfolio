@@ -1,0 +1,268 @@
+   <svg className="h-[1lh] w-5.5 shrink-0" viewBox="0 0 22 22" fill="none" stroke-linecap="square">
+              <circle cx="11" cy="11" r="11" className="fill-sky-400/25" />
+              <circle cx="11" cy="11" r="10.5" className="stroke-sky-400/25" />
+              <path d="M8 11.5L10.5 14L14 8" className="stroke-sky-800 dark:stroke-sky-300" />
+            </svg>
+
+button
+
+return	const [count, setCount] = useState(0)
+		<div className='border w-40 h-10 rounded-md flex text-center justify-center gap-15'>
+				<button
+					className=''
+					type='button'
+					onClick={() => setCount(count + 1)}
+				>
+					Counter: {count}
+				</button>
+			</div>
+button
+            Tailwindcsscss
+           <div> mx-auto max-w-2xl pt5 <div/>
+
+           const Catalogue = ({children}:  {children:React.ReactNode}) => {
+
+	return (
+		<div className=' container min-h-screen bg-white [--pattern-fg:var(--color-gray-950)]/5 dark:bg-gray-800 dark:[--pattern-fg:var(--color-white)]/10'>
+			<h1>This is parent</h1>
+      {children}
+		</div>
+	)
+}
+
+export default Catalogue
+
+анонимной функцией:<button
+  onClick={(e) => {
+    e.preventDefault();
+    console.log('Clicked!');
+  }}
+>
+  Click me
+</button>
+анонимной функцией
+именованные функции:const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  e.preventDefault();
+  console.log('Clicked');
+};
+
+<button onClick={handleClick}>Click</button>
+именованные функции
+
+Temna tema
+/----------------------------------/
+import { useContext } from 'react'
+import { ThemeContext } from '../hooks/ThemeContext'
+/----------------------------------/
+useEffect(() => {
+  if (state.theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+}, [state.theme]);
+
+/----------------------------------/
+const ThemeSwitcher = () => {
+const { state, dispatch } = useContext(ThemeContext)
+return(
+<button onClick={() => dispatch({ type: 'CHANGE_THEME' })}>
+Сменить тему
+</button>
+<p className='text-sm text-gray-500'>Current theme: {state.theme}</p>
+)
+} 
+/----------------------------------/
+нада обирнуть 
+	<ThemeProvider>
+		<App />
+	</ThemeProvider>
+нада обирнуть
+/----------------------------------/
+
+'use client';
+
+import React, { useState, useEffect } from 'react';
+
+
+type MessageType = 'success' | 'error';
+
+const Catalogue = () => {
+
+
+  const [inputValue, setInputValue] = useState('');
+  const [message, setMessage] = useState('');
+  const [messageVisible, setMessageVisible] = useState(false);
+  const [messageType, setMessageType] = useState<MessageType>('success');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!inputValue.trim()) {
+      setMessage('Please enter something to search.');
+      setMessageType('error');
+    } else {
+      setMessage(`Searching for "${inputValue}"`);
+      setMessageType('success');
+    }
+    setMessageVisible(true);
+  };
+
+  const handleDelete = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => {
+    e.preventDefault();
+    setInputValue('');
+    setMessage(`Post ${id} deleted and input cleared!`);
+    setMessageType('error');
+    setMessageVisible(true);
+  };
+
+  useEffect(() => {
+    if (!messageVisible) return;
+
+    const timer = setTimeout(() => {
+      setMessageVisible(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [messageVisible]);
+
+  // Ручное скрытие сообщения
+  const closeMessage = () => {
+    setMessageVisible(false);
+  };
+
+  return (
+		<div className='container min-h-screen bg-white dark:bg-gray-800 p-5 first:'>
+			<h1 className='text-center pt-10 mb-10 text-2xl font-bold'>
+				This is parent
+			</h1>
+
+			<form className='flex flex-col gap-5 max-w-lg w-full mx-auto px-4'>
+				<input
+					className='px-5 py-2 rounded-lg border border-gray-300 '
+					type='text'
+					placeholder='Search for anything...'
+					value={inputValue}
+					onChange={handleChange}
+				/>
+
+				<div className='flex gap-3'>
+					<button
+						className='px-4 py-2 rounded-md border-2 border-gray-400 hover:bg-gray-100 transition'
+						type='button'
+						onClick={handleClick}
+					>
+						Search
+					</button>
+
+					<button
+						className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition'
+						type='button'
+						onClick={e => handleDelete(e, 1)}
+					>
+						Delete
+					</button>
+				</div>
+
+				{/* Сообщение с анимацией и кнопкой закрытия */}
+				<div
+					className={`pt-5 font-medium flex items-center justify-between max-w-lg mx-auto transition-opacity duration-500 ease-in-out
+            ${messageVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} 
+            ${
+							messageType === 'success'
+								? 'text-green-700 dark:text-green-400'
+								: 'text-red-700 dark:text-red-400'
+						}
+          `}
+					role='alert'
+				>
+					<span>{message}</span>
+					<button
+						onClick={closeMessage}
+						aria-label='Close message'
+						className='ml-4 text-xl font-bold hover:text-gray-700 dark:hover:text-gray-300 transition'
+						type='button'
+					>
+						&times;
+					</button>
+				</div>
+			</form>
+		
+		</div>
+	)
+};
+
+2 часть 
+'use client'
+import { useEffect, useRef } from 'react'
+
+const CataloguePage = () => {
+	const inputRef = useRef<HTMLInputElement>(null)
+	const usernameInputRef = useRef<HTMLInputElement>(null)
+
+	useEffect(() => {
+		inputRef.current?.focus()
+	}, [])
+
+
+const handelClick = () => {
+console.log("username is:" + usernameInputRef.current?.value);
+
+}
+
+	return (
+		<div className='flex justify-center items-center min-h-screen bg-gray-100 px-4'>
+			<div className='w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-white rounded-xl shadow-lg p-8'>
+				<h1 className='text-2xl font-bold mb-6 text-center text-gray-800'>
+					Catalogue Page
+				</h1>
+
+				<div className='flex flex-col gap-4'>
+					<input
+						ref={inputRef}
+						type='text'
+						placeholder='Focus here'
+						className='p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500'
+					/>
+					<input
+						ref={usernameInputRef}
+						type='text'
+						placeholder='Username'
+						className='p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500'
+					/>
+					<button className='bg-blue-600 text-white p-4 rounded-md hover:bg-blue-700 transition-all'
+          onClick={handelClick}
+          >
+						Send
+					</button>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+export default CataloguePage
+2часеь
+Элемент	Объяснение
+export default Catalogue;
+mx-auto — центрирует контейнер по горизонтали.
+w-full — контейнер занимает всю доступную ширину.
+max-w-[1200px] — ограничивает максимальную ширину (можешь изменить на любое значение).
+px-4 — добавляет горизонтальные отступы (важно для мобильных).
+min-h-screen	Центрирует по вертикали (на всю высоту экрана).
+bg-gray-100	Светлый фон всей страницы.
+max-w-* + w-full	Адаптивная ширина блока формы.
+bg-white + rounded-xl + shadow-lg	Красивая "карточка" с закруглениями и тенью.
+focus:ring-*	Приятные эффекты при фокусе на input.
+hover:bg-blue-700	Анимация наведения на кнопку.
+text-center	Центрирование заголовка.
+
+
+Это отключает Git в конкретной папке проекта. mv .git .git_backup
+Git перестанет работать в этом каталоге. Чтобы вернуть: mv .git_backup .git

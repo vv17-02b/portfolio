@@ -1,0 +1,24 @@
+:root {
+  --font-family-base: 'Poppins', sans-serif;
+  --font-size-base: 16px;
+  --line-hieght: 1.625;
+  --gutter: 1.25rem;
+
+  --black: #000000;
+  --color-wight: #fff;
+
+  --color-text: #000000;
+  --color-background-start: #11100f;
+  --color-background-end: #ffffff;
+  --container-offset: 15px;
+  --content-width: 1180px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+  --content-fluid-width: 1790px;
+  --container-fluid-width: calc(var(--content-fluid-width) + (var(--container-offset) * 2));
+}
+
+html.dark {
+  --color-text: #ffffff;
+  --color-background-start: #0a0a0a;
+  --color-background-end: #1a1a1a;
+}
